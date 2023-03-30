@@ -1,0 +1,1706 @@
+[
+    {
+        "id": "233ceb6f6a26b6c1",
+        "type": "tab",
+        "label": "Weather",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5827ba69381f2450",
+        "type": "ui_button",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "group": "a7310f1a6207667c",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "SUBMIT",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 80,
+        "y": 180,
+        "wires": [
+            [
+                "be644559cd7a4780"
+            ]
+        ]
+    },
+    {
+        "id": "91bcec914e217b39",
+        "type": "ui_text_input",
+        "z": "233ceb6f6a26b6c1",
+        "name": "City",
+        "label": "City",
+        "tooltip": "",
+        "group": "a7310f1a6207667c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 90,
+        "y": 120,
+        "wires": [
+            [
+                "74780a0f465f962f"
+            ]
+        ]
+    },
+    {
+        "id": "29b1cfbedd01774e",
+        "type": "ui_text_input",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Country",
+        "label": "Country",
+        "tooltip": "",
+        "group": "a7310f1a6207667c",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 100,
+        "y": 60,
+        "wires": [
+            [
+                "6d20c27cc25f4d9d"
+            ]
+        ]
+    },
+    {
+        "id": "450dc537ea5f9caa",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "function 1",
+        "func": "return {\n    location: { \n        country: global.get(\"country\"), \n        city: global.get(\"city\")\n    }\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 180,
+        "wires": [
+            [
+                "54ec1b3ea534c32f"
+            ]
+        ]
+    },
+    {
+        "id": "302f60a455d70c65",
+        "type": "debug",
+        "z": "233ceb6f6a26b6c1",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1380,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "74780a0f465f962f",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "SetGlobalVar",
+        "func": "global.set(\"city\", msg.payload);\n",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "6d20c27cc25f4d9d",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "SetGlobalVar",
+        "func": "global.set(\"country\", msg.payload);\n",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "49bc73e2ce4e0c09",
+        "type": "ui_gauge",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Pressure",
+        "group": "9e34a1e2ced2d8a7",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "",
+        "label": "atm",
+        "format": "{{pressure}}",
+        "min": 0,
+        "max": "2",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1140,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "adf5206ce1c28433",
+        "type": "ui_slider",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "label": "Limit",
+        "tooltip": "",
+        "group": "1372d51cb7dc749f",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "topic",
+        "topicType": "msg",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "className": "",
+        "x": 70,
+        "y": 460,
+        "wires": [
+            [
+                "ec602674bec778bb"
+            ]
+        ]
+    },
+    {
+        "id": "b3da5c7a331b8394",
+        "type": "ui_dropdown",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "label": "Warning",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "1372d51cb7dc749f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Temperature",
+                "value": 0,
+                "type": "num"
+            },
+            {
+                "label": "Pressure",
+                "value": 1,
+                "type": "num"
+            },
+            {
+                "label": "Humidity",
+                "value": 2,
+                "type": "num"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 80,
+        "y": 400,
+        "wires": [
+            [
+                "a4ce1436cff86198"
+            ]
+        ]
+    },
+    {
+        "id": "3e3182ef8a45f0be",
+        "type": "ui_gauge",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Humidity",
+        "group": "5315b54767511543",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "",
+        "label": "%",
+        "format": "{{humid}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1140,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "4325a7e118bf9ba5",
+        "type": "ui_text",
+        "z": "233ceb6f6a26b6c1",
+        "group": "0a78f74045963e09",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Description",
+        "label": "{{location}}",
+        "format": "{{description}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 1150,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "57095632831277cb",
+        "type": "ui_text",
+        "z": "233ceb6f6a26b6c1",
+        "group": "0a78f74045963e09",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Sunrise",
+        "label": "Sunrise",
+        "format": "{{sunrise}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1140,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "d50e274a2a3ec252",
+        "type": "ui_text",
+        "z": "233ceb6f6a26b6c1",
+        "group": "0a78f74045963e09",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Sunset",
+        "label": "Sunset",
+        "format": "{{sunset}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 1140,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "416c78ea99102622",
+        "type": "ui_gauge",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Temperature",
+        "group": "43aa359a3e127c2f",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "",
+        "label": "C",
+        "format": "{{temp}}",
+        "min": 0,
+        "max": "45",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1150,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "ebfdb5cbdfbb8bf2",
+        "type": "ui_gauge",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Wind Speed",
+        "group": "f1d8d3da5de7248e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "",
+        "label": "km/h",
+        "format": "{{wspeed}}",
+        "min": 0,
+        "max": "10",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1150,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "e4bcf4d9d577cbe4",
+        "type": "ui_gauge",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Wind Direction",
+        "group": "f1d8d3da5de7248e",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "",
+        "label": "deg",
+        "format": "{{wdir}}",
+        "min": 0,
+        "max": "365",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 1160,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "54ec1b3ea534c32f",
+        "type": "openweathermap",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Get Whether",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "",
+        "country": "",
+        "language": "en",
+        "credentials": {},
+        "x": 790,
+        "y": 180,
+        "wires": [
+            [
+                "c9c11a01fb8669c9"
+            ]
+        ]
+    },
+    {
+        "id": "c9c11a01fb8669c9",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Data Processing",
+        "func": "\nvar tempsunrise = new Date(msg.payload.sunrise * 1000);\nvar tempsunset = new Date(msg.payload.sunset * 1000);\n\nreturn {\n    pressure: (msg.payload.pressure / 1000),\n    temp: (msg.payload.tempc),\n    humid: (msg.payload.humidity),\n    wspeed: (msg.payload.windspeed),\n    wdir: (msg.payload.winddirection),\n    description: (msg.payload.description),\n    sunrise: tempsunrise.getHours() + \":\" + tempsunrise.getMinutes() + \":\" + tempsunrise.getSeconds(),\n    sunset: tempsunset.getHours() + \":\" + tempsunset.getMinutes() + \":\" + tempsunset.getSeconds(),\n    location: (msg.payload.location),\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 240,
+        "wires": [
+            [
+                "49bc73e2ce4e0c09",
+                "416c78ea99102622",
+                "3e3182ef8a45f0be",
+                "ebfdb5cbdfbb8bf2",
+                "e4bcf4d9d577cbe4",
+                "4325a7e118bf9ba5",
+                "57095632831277cb",
+                "d50e274a2a3ec252",
+                "ce1b34a6f2e963b6",
+                "80c5f820f573dfba",
+                "4ea5f40776a39290",
+                "d1f4ec0d3f3e8a96",
+                "69d650f0334ca99d",
+                "f76a0524a4986be2"
+            ]
+        ]
+    },
+    {
+        "id": "5ea21bf5dadd04e2",
+        "type": "ui_chart",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Temperature",
+        "group": "791e8f34891b0aab",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Temperature",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1390,
+        "y": 780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1aced5be98507f7d",
+        "type": "ui_chart",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Humidity",
+        "group": "791e8f34891b0aab",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Humidity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1380,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ce1b34a6f2e963b6",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Chart Data Process",
+        "func": "\nreturn {\n    payload: msg.temp\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 780,
+        "wires": [
+            [
+                "5ea21bf5dadd04e2"
+            ]
+        ]
+    },
+    {
+        "id": "80c5f820f573dfba",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Chart Data Process",
+        "func": "\nreturn {\n    payload: msg.humid\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 840,
+        "wires": [
+            [
+                "1aced5be98507f7d"
+            ]
+        ]
+    },
+    {
+        "id": "9977cb12247c0e11",
+        "type": "ui_audio",
+        "z": "233ceb6f6a26b6c1",
+        "name": "SpeakDescription",
+        "group": "0a78f74045963e09",
+        "voice": "Microsoft George - English (United Kingdom)",
+        "always": "",
+        "x": 1590,
+        "y": 720,
+        "wires": [],
+        "icon": "node-red/bridge.svg"
+    },
+    {
+        "id": "d18c99f5ee7ecbec",
+        "type": "ui_button",
+        "z": "233ceb6f6a26b6c1",
+        "name": "SpeakOut Button",
+        "group": "0a78f74045963e09",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Speak Out",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "speaker",
+        "payload": "weatherDescript",
+        "payloadType": "global",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 1350,
+        "y": 720,
+        "wires": [
+            [
+                "9977cb12247c0e11"
+            ]
+        ]
+    },
+    {
+        "id": "4ea5f40776a39290",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "SetGlobalVar",
+        "func": "global.set(\"weatherDescript\", msg.description);\n",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1150,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "be644559cd7a4780",
+        "type": "trigger",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "-30",
+        "extend": false,
+        "overrideDelay": true,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 290,
+        "y": 240,
+        "wires": [
+            [
+                "b458b5ee842735a4"
+            ]
+        ]
+    },
+    {
+        "id": "9ee2a93c80dcc77f",
+        "type": "ui_numeric",
+        "z": "233ceb6f6a26b6c1",
+        "name": "UpdateInterval",
+        "label": "Update Interval (Seconds)",
+        "tooltip": "",
+        "group": "5f2aa3726a6dcc39",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": true,
+        "topic": "topic",
+        "topicType": "msg",
+        "format": "{{value}}",
+        "min": "5",
+        "max": "120",
+        "step": "1",
+        "className": "",
+        "x": 100,
+        "y": 320,
+        "wires": [
+            [
+                "8b48bf928a14d2c3"
+            ]
+        ]
+    },
+    {
+        "id": "8b48bf928a14d2c3",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "function 1",
+        "func": "\nreturn {\n    delay: msg.payload * 1000\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 320,
+        "wires": [
+            [
+                "7475cf902ee97737"
+            ]
+        ]
+    },
+    {
+        "id": "7475cf902ee97737",
+        "type": "delay",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "3",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 460,
+        "y": 320,
+        "wires": [
+            [
+                "be644559cd7a4780"
+            ]
+        ]
+    },
+    {
+        "id": "e4e24d696c0b207b",
+        "type": "ui_ui_control",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "events": "all",
+        "x": 720,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e78798a9174c6501",
+        "type": "ui_dropdown",
+        "z": "233ceb6f6a26b6c1",
+        "name": "LocationMethod",
+        "label": "Location Type",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "5f2aa3726a6dcc39",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Country/ City",
+                "value": true,
+                "type": "bool"
+            },
+            {
+                "label": "Coordinates",
+                "value": false,
+                "type": "bool"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 160,
+        "y": 760,
+        "wires": [
+            [
+                "54d38857a4b02abf"
+            ]
+        ]
+    },
+    {
+        "id": "54d38857a4b02abf",
+        "type": "switch",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 350,
+        "y": 760,
+        "wires": [
+            [
+                "df6be873a6884254",
+                "6e34bacaed4a6cff",
+                "0312e1b6c8ce4d40"
+            ],
+            [
+                "856d98edc4977bb6",
+                "1139689b700f7f48",
+                "330f9c3ec0244dc0"
+            ]
+        ]
+    },
+    {
+        "id": "856d98edc4977bb6",
+        "type": "change",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"Weather_Input_Country/City\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 800,
+        "wires": [
+            [
+                "e4e24d696c0b207b"
+            ]
+        ]
+    },
+    {
+        "id": "df6be873a6884254",
+        "type": "change",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Weather_Input_Country/City\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 720,
+        "wires": [
+            [
+                "e4e24d696c0b207b"
+            ]
+        ]
+    },
+    {
+        "id": "1e913d3742d2e65a",
+        "type": "ui_text_input",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Latitude",
+        "label": "Latitude",
+        "tooltip": "",
+        "group": "8f7cadab0121ad5b",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 560,
+        "y": 60,
+        "wires": [
+            [
+                "4fd25558aaa471fc"
+            ]
+        ]
+    },
+    {
+        "id": "4fd25558aaa471fc",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "SetGlobalVar",
+        "func": "global.set(\"latitude\", msg.payload);\n",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "294bf55117aa3091",
+        "type": "ui_text_input",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Longitude",
+        "label": "Longitude",
+        "tooltip": "",
+        "group": "8f7cadab0121ad5b",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": 300,
+        "topic": "topic",
+        "sendOnBlur": true,
+        "className": "",
+        "topicType": "msg",
+        "x": 560,
+        "y": 120,
+        "wires": [
+            [
+                "37b041293523bcc7"
+            ]
+        ]
+    },
+    {
+        "id": "37b041293523bcc7",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "SetGlobalVar",
+        "func": "global.set(\"longitude\", msg.payload);\n",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1139689b700f7f48",
+        "type": "change",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Weather_Input_Cordinates\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 840,
+        "wires": [
+            [
+                "e4e24d696c0b207b"
+            ]
+        ]
+    },
+    {
+        "id": "6e34bacaed4a6cff",
+        "type": "change",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"Weather_Input_Cordinates\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 680,
+        "wires": [
+            [
+                "e4e24d696c0b207b"
+            ]
+        ]
+    },
+    {
+        "id": "2ff4060bcf198868",
+        "type": "ui_button",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "group": "8f7cadab0121ad5b",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "SUBMIT",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 80,
+        "y": 240,
+        "wires": [
+            [
+                "be644559cd7a4780"
+            ]
+        ]
+    },
+    {
+        "id": "0312e1b6c8ce4d40",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "SetGlobalVar",
+        "func": "global.set(\"inputCC\", true);\n",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "330f9c3ec0244dc0",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "SetGlobalVar",
+        "func": "global.set(\"inputCC\", false);\n",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 510,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "2956d9c101c43eed",
+        "type": "ui_switch",
+        "z": "233ceb6f6a26b6c1",
+        "name": "IsChartVisible",
+        "label": "Is Charts Visible?",
+        "tooltip": "",
+        "group": "8d38e5d2d9b51d77",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 160,
+        "y": 1000,
+        "wires": [
+            [
+                "ba64b9200297524d"
+            ]
+        ]
+    },
+    {
+        "id": "ba64b9200297524d",
+        "type": "switch",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 350,
+        "y": 1000,
+        "wires": [
+            [
+                "dbe4eceed9daec5c",
+                "44a1acd487b0df98"
+            ],
+            [
+                "f01c7c1d72cfd8ef",
+                "7fac7ebbcf62b3ab"
+            ]
+        ]
+    },
+    {
+        "id": "dbe4eceed9daec5c",
+        "type": "change",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Charts_Charts_Board\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 960,
+        "wires": [
+            [
+                "c6f3cbf40b9b6041"
+            ]
+        ]
+    },
+    {
+        "id": "c6f3cbf40b9b6041",
+        "type": "ui_ui_control",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "events": "all",
+        "x": 720,
+        "y": 1000,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f01c7c1d72cfd8ef",
+        "type": "change",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"Charts_Charts_Board\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 1040,
+        "wires": [
+            [
+                "c6f3cbf40b9b6041"
+            ]
+        ]
+    },
+    {
+        "id": "36619207326a2e8c",
+        "type": "ui_text",
+        "z": "233ceb6f6a26b6c1",
+        "group": "f3302784a48e270e",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "No Charts To Display. Turn on charts from Settings Tab.",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "x": 290,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "7fac7ebbcf62b3ab",
+        "type": "change",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"show\":[\"Charts_No_Charts\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 1080,
+        "wires": [
+            [
+                "c6f3cbf40b9b6041"
+            ]
+        ]
+    },
+    {
+        "id": "44a1acd487b0df98",
+        "type": "change",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"group\":{\"hide\":[\"Charts_No_Charts\"]}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 920,
+        "wires": [
+            [
+                "c6f3cbf40b9b6041"
+            ]
+        ]
+    },
+    {
+        "id": "634988f74c2a4c3f",
+        "type": "ui_chart",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Wind Speed",
+        "group": "791e8f34891b0aab",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Wind Speed",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 1390,
+        "y": 900,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d1f4ec0d3f3e8a96",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Chart Data Process",
+        "func": "\nreturn {\n    payload: msg.wspeed\n};",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1170,
+        "y": 900,
+        "wires": [
+            [
+                "634988f74c2a4c3f"
+            ]
+        ]
+    },
+    {
+        "id": "b458b5ee842735a4",
+        "type": "switch",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "property": "inputCC",
+        "propertyType": "global",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 490,
+        "y": 240,
+        "wires": [
+            [
+                "450dc537ea5f9caa"
+            ],
+            [
+                "decbd426265b8717"
+            ]
+        ]
+    },
+    {
+        "id": "2550600b7e03659f",
+        "type": "openweathermap",
+        "z": "233ceb6f6a26b6c1",
+        "name": "Get Whether",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "",
+        "country": "",
+        "language": "en",
+        "credentials": {},
+        "x": 790,
+        "y": 300,
+        "wires": [
+            [
+                "c9c11a01fb8669c9"
+            ]
+        ]
+    },
+    {
+        "id": "decbd426265b8717",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "function 2",
+        "func": "return {\n    location: { \n        lat: global.get(\"latitude\"), \n        lon: global.get(\"longitude\")\n    }\n}",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 620,
+        "y": 260,
+        "wires": [
+            [
+                "2550600b7e03659f"
+            ]
+        ]
+    },
+    {
+        "id": "ec602674bec778bb",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "function 3",
+        "func": "let warnParam = global.get(\"warning\")\n\nif (warnParam == 0) {\n    global.set(\"warnTemp\", msg.payload);\n} else if (warnParam == 1) {\n    global.set(\"warnPress\", msg.payload);\n} else if (warnParam == 2) {\n    global.set(\"warnHumid\", msg.payload);\n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a4ce1436cff86198",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "SetGlobalVar",
+        "func": "global.set(\"warning\", msg.payload);",
+        "outputs": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 250,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "69d650f0334ca99d",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "function 4",
+        "func": "let payload = \"\";\nlet exceedValue = 0;\n\nif (msg.temp >= global.get(\"warnTemp\")) {\n    payload += \"Warning! Temperature is \" + msg.temp + \"c. Exceeds the limit by \" + Math.round(msg.temp - global.get(\"warnTemp\")) + \"c.....\"\n} \nif ((msg.pressure/1000) >= global.get(\"warnPress\")) {\n    payload += \"Warning! Pressure is \" + (msg.pressure / 1000) + \"atm. Exceeds the limit by \" + Math.round((msg.pressure / 1000) - global.get(\"warnPress\")) + \"atm.....\"\n}\nif (msg.humid >= global.get(\"warnHumid\")) {\n    payload += \"Warning! Humidity is \" + msg.humid + \"%. Exceeds the limit by \" + Math.round(msg.humid - global.get(\"warnHumid\")) + \"%.....\"\n}\nif (payload != \"\") {\n    return { payload };\n} \n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1140,
+        "y": 180,
+        "wires": [
+            [
+                "54a350ddcbb3640c"
+            ]
+        ]
+    },
+    {
+        "id": "54a350ddcbb3640c",
+        "type": "ui_toast",
+        "z": "233ceb6f6a26b6c1",
+        "position": "bottom right",
+        "displayTime": "10",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "",
+        "x": 1370,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "4db5678b29703e9b",
+        "type": "mqtt out",
+        "z": "233ceb6f6a26b6c1",
+        "name": "",
+        "topic": "ENTC-SC-IOT-WARN-PRESENTAGE",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "15979c6c4df2b714",
+        "x": 1450,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "f76a0524a4986be2",
+        "type": "function",
+        "z": "233ceb6f6a26b6c1",
+        "name": "function 5",
+        "func": "let warnPresentage = -1;\nlet tempWarnPresentage = 0;\n\nif (msg.temp >= global.get(\"warnTemp\")) {\n    tempWarnPresentage = Math.round(((msg.temp - global.get(\"warnTemp\")) / global.get(\"warnTemp\")) * 100);\n    if (tempWarnPresentage > warnPresentage) {\n        warnPresentage = tempWarnPresentage;\n    }\n}\nif ((msg.pressure / 1000) >= global.get(\"warnPress\")) {\n    tempWarnPresentage = Math.round((((msg.pressure / 1000) - global.get(\"warnPress\")) / global.get(\"warnPress\")) * 100);\n    if (tempWarnPresentage > warnPresentage) {\n        warnPresentage = tempWarnPresentage;\n    }\n}\nif (msg.humid >= global.get(\"warnHumid\")) {\n    tempWarnPresentage = Math.round(((msg.humid - global.get(\"warnHumid\")) / global.get(\"warnHumid\")) * 100);\n    if (tempWarnPresentage > warnPresentage) {\n        warnPresentage = tempWarnPresentage;\n    }\n}\nlet payload = warnPresentage;\nif (payload > 100) {\n    payload = 100;\n}\nreturn { payload };",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1140,
+        "y": 120,
+        "wires": [
+            [
+                "302f60a455d70c65",
+                "4db5678b29703e9b"
+            ]
+        ]
+    },
+    {
+        "id": "a7310f1a6207667c",
+        "type": "ui_group",
+        "name": "Input Country/City",
+        "tab": "36de6a5308e5654e",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9e34a1e2ced2d8a7",
+        "type": "ui_group",
+        "name": "Pressure",
+        "tab": "36de6a5308e5654e",
+        "order": 5,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "1372d51cb7dc749f",
+        "type": "ui_group",
+        "name": "Warning Limits",
+        "tab": "36de6a5308e5654e",
+        "order": 8,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5315b54767511543",
+        "type": "ui_group",
+        "name": "Humidity",
+        "tab": "36de6a5308e5654e",
+        "order": 7,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0a78f74045963e09",
+        "type": "ui_group",
+        "name": "Description",
+        "tab": "36de6a5308e5654e",
+        "order": 9,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "43aa359a3e127c2f",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "36de6a5308e5654e",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f1d8d3da5de7248e",
+        "type": "ui_group",
+        "name": "Wind",
+        "tab": "36de6a5308e5654e",
+        "order": 6,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "791e8f34891b0aab",
+        "type": "ui_group",
+        "name": "Charts Board",
+        "tab": "729ec98d12a33842",
+        "order": 1,
+        "disp": false,
+        "width": "18",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5f2aa3726a6dcc39",
+        "type": "ui_group",
+        "name": "Input Method",
+        "tab": "7095d6f69641e3a1",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8f7cadab0121ad5b",
+        "type": "ui_group",
+        "name": "Input Cordinates",
+        "tab": "36de6a5308e5654e",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8d38e5d2d9b51d77",
+        "type": "ui_group",
+        "name": "Charts",
+        "tab": "7095d6f69641e3a1",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "f3302784a48e270e",
+        "type": "ui_group",
+        "name": "No Charts",
+        "tab": "729ec98d12a33842",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "15979c6c4df2b714",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "https://test.mosquitto.org/",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "36de6a5308e5654e",
+        "type": "ui_tab",
+        "name": "Weather",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "729ec98d12a33842",
+        "type": "ui_tab",
+        "name": "Charts",
+        "icon": "dashboard",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "7095d6f69641e3a1",
+        "type": "ui_tab",
+        "name": "Settings",
+        "icon": "dashboard",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]
