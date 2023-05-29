@@ -3,6 +3,7 @@
 Hi! This project consist of two parts. Developing printed circuit board and developing smart-medibox algorithm.
 Printed circuit board is developed using EasyEDA CAD tool & algorithm is developed using Arduino IDE with ESP32 Micro controller.
 
+
 ## Methodology
 
 - Following approach is taken to design the hardware.
