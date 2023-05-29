@@ -46,7 +46,7 @@ G -- No --> I[/Ring alarm/] --> G
 
 - Finally we can view in 3D with inbuild functionality of EasyEDA.
 
-![PCB-3D-View](Images/PCB-3D-View.png)
+![PCB-3D-View](Images/PCB-3D-View.jpeg)
 
 - EasyEDA Project is shared in https://oshwlab.com/skwin95/smart-medibox link.
 - Gerber files can be generated once after we complete this design. These files are in **Printed Circuit Board** folder. 
